@@ -1,0 +1,35 @@
+{
+  "name": "hrsf81-mvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shwetachari/hrsf81-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shwetachari/hrsf81-mvp/issues"
+  },
+  "homepage": "https://github.com/shwetachari/hrsf81-mvp#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.5",
+    "jquery": "^3.2.1",
+    "node": "^8.3.0",
+    "react": "^15.6.1"
+  },
+  "dependencies": {
+    "live-server": "^1.2.0",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.13",
+    "nodemon": "^1.12.1",
+    "react-bootstrap": "^0.31.3"
+  }
+}
