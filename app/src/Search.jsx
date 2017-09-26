@@ -2,7 +2,8 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: []
+      airportOptions: [],
+      airlineOptions: []
     };
   }
 
@@ -19,9 +20,8 @@ class Search extends React.Component {
       type: 'GET',
       'Content-Type': 'application/json',
       success: (res) => {
-        // render top 25 in select list
         this.setState({
-          options: res
+          [name + 'Options']: res
         })
       },
       error: () => {
@@ -38,28 +38,29 @@ class Search extends React.Component {
     return (
       <div>
         <div className="col-xs-12">
-          <label>Enter Airport Code or Name</label>
-          <input name="airport" onChange={this.getValue.bind(this)}/>
-          <label>Enter Airline Code or Name</label>
-          <input name="airline" onChange={this.getValue.bind(this)}/>
+          <label className="col-xs-12 text-center">Enter Airport Code or Name</label>
+          <input className="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center" name="airport" onChange={this.getValue.bind(this)}/>
+          <label className="col-xs-12 text-center">Enter Airline Code or Name</label>
+          <input className="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center" name="airline" onChange={this.getValue.bind(this)}/>
         </div>
 
-        <div className="col-xs-12">
-          <select value={this.state.value} onChange={this.select.bind(this.props.parent, 'airport')}>
-            <option value={['', '']}>Select an Airport</option>
-            {this.state.options.map((airport, i) => {
+        <label className="col-xs-12 text-center">Make Your Selection</label>
+        <div className="col-xs-12 selects">
+          <select className="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 text-center" value={this.state.value} onChange={this.select.bind(this.props.parent, 'airport')}>
+            <option value={JSON.stringify(['', ''])}>Select an Airport</option>
+            {this.state.airportOptions.map((airport, i) => {
               return (<option key={i} value={JSON.stringify([airport.airport.code, airport.airport.name])}>{airport.airport.name}({airport.airport.code})</option>);
             })}
           </select>
-          <select value={this.state.value} onChange={this.select.bind(this.props.parent, 'airline')}>
-            <option value={['', '']}>Select an Airline</option>
-            {this.state.options.map((airline, i) => {
+          <select className="col-xs-12 col-sm-5 col-md-4 text-center" value={this.state.value} onChange={this.select.bind(this.props.parent, 'airline')}>
+            <option value={JSON.stringify(['', ''])}>Select an Airline</option>
+            {this.state.airlineOptions.map((airline, i) => {
               return (<option key={i} value={JSON.stringify([airline.carrier.code, airline.carrier.name])}>{airline.carrier.name}({airline.carrier.code})</option>);
             })}
           </select>
         </div>
 
-        <button onClick={this.props.getData}>Search</button>
+        <button className="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center" onClick={this.props.getData}>Search</button>
       </div>
     )
   }

@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const db = require('./db/flights.js');
+const Swagger = require('swagger-client');
+const apikey = require('./config.js');
+const request = require('request');
 
 app.use('/', express.static('./app/static/'));
 
@@ -13,7 +16,6 @@ app.options('/*', (req, res) => {
 
 app.get('/airlines', (req, res) => {
   var options = {};
-  // var distinct = req.query.airline ? "carrier.code" : "airport.code";
   if (req.query.airline) {
     let regex = new RegExp(`.*${req.query.airline}.*`, 'i');
     options = {$or: [{"carrier.code": {$regex: regex}}, {"carrier.name": {$regex: regex}}]};
@@ -23,10 +25,7 @@ app.get('/airlines', (req, res) => {
   }
   db.Flight
     .find(options)
-    // .aggregate([
-    // //remove duplicates
-    // ])
-    .limit(10)
+    .limit(15)
     .then(results => {
       res.send(200, results);
     });
@@ -42,6 +41,47 @@ app.get('/flightdata', (req, res) => {
     .then(results => {
       res.send(200, results);
     });
+});
+
+app.get('/findflights', (req, res) => {
+  Swagger.http({
+    url: 'https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search',
+    query: {
+      apikey: apikey.apikey,
+      origin: req.query.airport
+    },
+    method: 'GET',
+  }).then((results) => {
+      res.send(results.body.results.slice(0,50));
+    })
+    .catch(err => {
+      console.log('Error fetching flight data', err);
+    })
+
+    /*
+    .then((results) => {
+        return results.body.results.slice(0,50)
+      })
+      .then((results) => {
+        results.forEach((result) => {
+          Swagger.http({
+            url: 'https://api.sandbox.amadeus.com/v1.2/airports/autocomplete',
+            query: {
+              apikey: apikey.apikey,
+              term: result.destination
+            },
+            method: 'GET',
+          })
+          .then(airportRes => {
+            result['destination_name'] = airportRes.body[0].label;
+          })
+        })
+        return results;
+      })
+      .then(results => {
+        res.send(results);
+      })
+    */
 });
 
 app.listen(3000, () => {
