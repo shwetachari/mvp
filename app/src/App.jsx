@@ -172,7 +172,7 @@ class App extends React.Component {
       .attr('transform', `translate(15, ${margin.top + h / 2})rotate(-90)`)
       .style('text-anchor', 'middle')
       .style('font-size', '18px')
-      .text('Percent of Flights ' + path[0].toUpperCase() + path.slice(1));
+      .text('(Sum of Monthly) Percent Flights ' + path[0].toUpperCase() + path.slice(1));
 
   }
 

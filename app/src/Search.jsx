@@ -47,13 +47,13 @@ class Search extends React.Component {
         <label className="col-xs-12 text-center">Make Your Selection</label>
         <div className="col-xs-12 selects">
           <select className="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 text-center" value={this.state.value} onChange={this.select.bind(this.props.parent, 'airport')}>
-            <option value={JSON.stringify(['', ''])}>Select an Airport</option>
+            <option value={JSON.stringify(['', ''])}>Select an Airport &#x25bc;</option>
             {this.state.airportOptions.map((airport, i) => {
               return (<option key={i} value={JSON.stringify([airport.airport.code, airport.airport.name])}>{airport.airport.name}({airport.airport.code})</option>);
             })}
           </select>
           <select className="col-xs-12 col-sm-5 col-md-4 text-center" value={this.state.value} onChange={this.select.bind(this.props.parent, 'airline')}>
-            <option value={JSON.stringify(['', ''])}>Select an Airline</option>
+            <option value={JSON.stringify(['', ''])}>Select an Airline &#x25bc;</option>
             {this.state.airlineOptions.map((airline, i) => {
               return (<option key={i} value={JSON.stringify([airline.carrier.code, airline.carrier.name])}>{airline.carrier.name}({airline.carrier.code})</option>);
             })}
