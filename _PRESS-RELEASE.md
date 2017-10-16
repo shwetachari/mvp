@@ -18,7 +18,7 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Don't Delay ##
 
-## Flight Delay History Statistics and Visualization ##\
+## Flight Delay History Statistics and Visualization ##
 
 ## Summary ##
   The product enables a user to track the flight delay statistics from 2003-2016 of any domestic (within the U.S.) airport and/or airline. Being able to anticipate flight delays allows a traveler more control over their plans. They will be able to reduce the risk of missing connecting flights and make more informed decisions about their choice of airline/airport when booking flight tickets.
