@@ -4,7 +4,9 @@ const db = require('./db/flights.js');
 const Swagger = require('swagger-client');
 const apikey = require('./config.js');
 const request = require('request');
+const cors = require('cors');
 
+app.use(cors({credentials: true, origin: true}));
 app.use('/', express.static('./app/static/'));
 
 app.options('/*', (req, res) => {

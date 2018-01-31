@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "babel": "babel app/src --out-dir app/static/compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
     "start": "nodemon server/index.js",
-    "babel": "babel app/src/ --out-dir app/static/compiled --presets=es2015,react --ignore=app/node_modules,app/compiled --source-maps inline --watch app/src"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -26,18 +27,13 @@
     "react": "^15.6.1"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "d3": "^4.10.2",
+    "cors": "^2.8.4",
     "live-server": "^1.2.0",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.13",
     "nodemon": "^1.12.1",
     "react-bootstrap": "^0.31.3",
-    "react-dom": "^15.6.1",
-    "react-scripts": "^1.0.13",
-    "request": "^2.82.0",
-    "swagger-client": "^3.1.2"
+    "request": "^2.83.0",
+    "swagger-client": "^3.4.7"
   }
 }
