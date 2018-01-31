@@ -1,6 +1,6 @@
 ## Don't Delay ##
 
-## Flight Delay History Statistics and Visualization ##\
+## Flight Delay History Statistics and Visualization ##
 
 ![Don't Delay Screencast](https://github.com/shwetachari/mvp/blob/master/images/dontdelay.gif)
 
